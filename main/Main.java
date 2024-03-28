@@ -46,30 +46,30 @@ public class Main {
         LOGGER.info("");
         LOGGER.info("Parsing " + filename + "\n");
         LOGGER.info("");
-//        final CharStream charStream = CharStreams.fromFileName(filename);
-//        CminusLexer lexer = new CminusLexer(charStream);
-//        CommonTokenStream tokens = new CommonTokenStream(lexer);
-//        CminusParser parser = new CminusParser(tokens);
-//        parser.setBuildParseTree(true);
-//        CminusParser.ProgramContext programCtx = parser.program();
+        final CharStream charStream = CharStreams.fromFileName(filename);
+        CminusLexer lexer = new CminusLexer(charStream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        CminusParser parser = new CminusParser(tokens);
+        parser.setBuildParseTree(true);
+        CminusParser.ProgramContext programCtx = parser.program();
 
         // TODO Implement building of the parse tree
         LOGGER.info("");
         LOGGER.info("Building abstract syntax tree");
         LOGGER.info("");
-//        ASTVisitor v = new ASTVisitor(LOGGER);
-//        Node ast = v.visitProgram(programCtx);
+        ASTVisitor v = new ASTVisitor(LOGGER);
+        Node ast = v.visitProgram(programCtx);
 
         // TODO Output formatted code
         LOGGER.info("");
         LOGGER.info("Formatted code:");
         LOGGER.info("");
-//        StringBuilder builder = new StringBuilder();
-//        try {
-//            ast.toCminus(builder, "");
-//        } finally {
-//            LOGGER.info(builder.toString());
-//        }
+        StringBuilder builder = new StringBuilder();
+        try {
+            ast.toCminus(builder, "");
+        } finally {
+            LOGGER.info(builder.toString());
+        }
     }
 
 }
